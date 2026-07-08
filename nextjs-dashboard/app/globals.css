@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-sans: var(--font-noto-sans-jp), sans-serif;
+
+  --color-gbg: #080810;
+  --color-gcard: #0e0e1c;
+  --color-gborder: #1e1e35;
+  --color-gprimary: #ff2d78;
+  --color-gaccent: #00ffb3;
+  --color-gpurple: #9b7fe8;
+  --color-gtext: #e4e4f0;
+  --color-gmuted: #5a5a7a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-gbg);
+  color: var(--color-gtext);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gborder);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gprimary);
+}
+
+::selection {
+  background: rgba(255, 45, 120, 0.3);
+  color: var(--color-gtext);
+}
+
+/* Default de Next.js, como usamos modo oscuro, no necesitamos prefers-color-scheme: dark
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
