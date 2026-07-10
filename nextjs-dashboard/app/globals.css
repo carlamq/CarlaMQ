@@ -79,3 +79,30 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+/******** NAV ****************************/
+.neon-pink {
+  color: var(--color-gprimary);
+  text-shadow: 0 0 10px rgba(255, 45, 120, 0.7), 0 0 30px rgba(255, 45, 120, 0.3);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-gprimary);
+  box-shadow: 0 0 8px rgba(255, 45, 120, 0.8);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
