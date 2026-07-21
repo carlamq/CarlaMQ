@@ -9,13 +9,6 @@ interface AboutProps {
 export default function About({ content }: AboutProps) {
   return (
     <section id="about" className="relative overflow-hidden py-24 px-6">
-      <div
-        aria-hidden="true"
-        className="absolute left-[-60px] top-1/2 -translate-y-1/2 font-sans text-[320px] font-black text-transparent leading-none select-none pointer-events-none"
-        style={{ WebkitTextStroke: '1px rgba(30,30,60,0.6)' }}
-      >
-        私
-      </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto grid grid-cols-2 gap-20 items-start">
         <div className="pt-30">

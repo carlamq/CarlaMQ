@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { useState, useRef, type PointerEvent } from 'react'
-import { OniMask, Kappa, TenguFan } from './Yokai'
 
 
 
@@ -64,48 +63,6 @@ export default function Hero({ content, onScrollToTerminal }: HeroProps) {
                   WebkitMaskImage: mask,
               }}
           />
-          {/* Kanji grande de fondo */}
-          <div
-              aria-hidden="true"
-              className="absolute right-[-30px] top-1/2 -translate-y-1/2 font-sans text-[clamp(240px,30vw,440px)] font-black text-transparent leading-none tracking-tighter select-none pointer-events-none"
-              style={{ WebkitTextStroke: '1px rgba(30,30,60,0.7)', animation: 'kanji-fade 1.2s 0.3s ease both' }}
-          >
-              技
-          </div>
-
-          {/* Kanji chiquitos flotantes */}
-          {[
-              { char: '創', className: 'top-[15%] left-[6%] text-[80px]', delay: '0.6s' },
-              { char: '美', className: 'top-[75%] left-[4%] text-[64px]', delay: '0.9s' },
-              { char: '力', className: 'top-[20%] right-[4%] text-[56px]', delay: '1.1s' },
-          ].map(({ char, className, delay }) => (
-              <div
-                  key={char}
-                  aria-hidden="true"
-                  className={`absolute font-sans font-black text-[rgba(30,30,60,0.5)] leading-none select-none pointer-events-none ${className}`}
-                  style={{ animation: `kanji-fade 1s ${delay} ease both, yokai-drift 8s ease-in-out infinite` }}
-              >
-                  {char}
-              </div>
-          ))}
-          {/* Yokai decorativos */}
-          <OniMask style={{
-              position: 'absolute', top: '8%', right: '2%',
-              width: '80px', opacity: 0.12, color: '#ff2d78',
-              animation: 'yokai-drift 7s ease-in-out infinite',
-          }} />
-          <Kappa style={{
-              position: 'absolute', bottom: '8%', left: '2%',
-              width: '70px', opacity: 0.1, color: '#00ffb3',
-              animation: 'yokai-drift 9s 1s ease-in-out infinite',
-          }} />
-          <TenguFan style={{
-              position: 'absolute', top: '55%', left: '1%',
-              width: '60px', opacity: 0.1, color: '#9b7fe8',
-              animation: 'yokai-drift 8s 2s ease-in-out infinite',
-          }} />
-
-
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 w-full grid grid-cols-[1fr_auto] items-center gap-10"> {/* El guion bajo _ dentro de los corchetes representa un espacio (en clases de Tailwind no puedes poner espacios literales)*/}
             <div>
               <p className="font-mono text-xs font-medium text-gaccent tracking-[0.22em] mb-3">

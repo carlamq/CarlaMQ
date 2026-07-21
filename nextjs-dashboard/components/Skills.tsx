@@ -8,13 +8,6 @@ interface SkillsProps {
 export default function Skills({ content }: SkillsProps) {
   return (
     <section id="skills" className="relative overflow-hidden py-24 px-6">
-      <div
-        aria-hidden="true"
-        className="absolute right-[-60px] top-1/2 -translate-y-1/2 font-sans text-[320px] font-black text-transparent leading-none select-none pointer-events-none"
-        style={{ WebkitTextStroke: '1px rgba(30,30,60,0.6)' }}
-      >
-        力
-      </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <h2
