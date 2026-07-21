@@ -205,7 +205,7 @@ export const content = { // Definimos el objeto content que contiene toda la inf
         },
         {
           id: '002',
-          name: 'Molino Campo Noble — Shopifyリニューアル',
+          name: 'Molino Campo Noble \nShopifyリニューアル',
           desc: 'クライアントのShopifyストアの全面リニューアル。カラーデザイン、\n情報設計、テーマ編集、UX改善を\n行い、ナビゲーションと購入導線を\n整理。クライアントが今後自分で\n編集しやすいよう、コードを整理して残した。2026年8月公開予定。',
           tags: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
           year: '2026',

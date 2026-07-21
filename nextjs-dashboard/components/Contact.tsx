@@ -18,7 +18,7 @@ export default function Contact({ content }: ContactProps) {
           <div>
             <h2
               className="font-mono text-[13px] font-bold tracking-[0.2em] text-gprimary mb-6"
-              style={{ textShadow: '0 0 10px rgba(255,45,120,0.5)' }}
+              style={{ textShadow: '0 0 10px rgba(86,156,214,0.5)' }}
             >
               {content.title}
             </h2>
@@ -31,7 +31,7 @@ export default function Contact({ content }: ContactProps) {
 
             <a
               href={`mailto:${content.email}`}
-              className="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.15em] text-gbg bg-gprimary rounded px-7 py-3.5 shadow-[0_0_20px_rgba(255,45,120,0.4)] hover:shadow-[0_0_40px_rgba(255,45,120,0.7)] hover:-translate-y-0.5 transition"
+              className="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.15em] text-gbg bg-gprimary rounded px-7 py-3.5 shadow-[0_0_20px_rgba(86,156,214,0.4)] hover:shadow-[0_0_40px_rgba(86,156,214,0.7)] hover:-translate-y-0.5 transition"
             >
               {content.cta} ✉
             </a>

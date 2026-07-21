@@ -17,7 +17,7 @@ export default async function MolinoComparePage({ searchParams }: MolinoCompareP
       <div className="max-w-3xl mx-auto">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.15em] text-gaccent mb-8 hover:[text-shadow:0_0_10px_rgba(0,255,179,0.7)]"
+          className="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.15em] text-gaccent mb-8 hover:[text-shadow:0_0_10px_rgba(106,153,85,0.7)]"
         >
           {c.backLabel}
         </Link>

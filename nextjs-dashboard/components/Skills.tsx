@@ -12,7 +12,7 @@ export default function Skills({ content }: SkillsProps) {
       <div className="relative z-10 max-w-[1200px] mx-auto">
         <h2
           className="font-mono text-[13px] font-bold tracking-[0.2em] text-gprimary mb-12"
-          style={{ textShadow: '0 0 10px rgba(255,45,120,0.5)' }}
+          style={{ textShadow: '0 0 10px rgba(86,156,214,0.5)' }}
         >
           {content.title}
         </h2>
@@ -23,7 +23,7 @@ export default function Skills({ content }: SkillsProps) {
               <div className="mb-5">
                 <span
                   className="font-mono text-[10px] font-extrabold tracking-[0.2em] text-gpurple"
-                  style={{ textShadow: '0 0 8px rgba(155,127,232,0.5)' }}
+                  style={{ textShadow: '0 0 8px rgba(220,220,170,0.5)' }}
                 >
                   {cat.name}
                 </span>

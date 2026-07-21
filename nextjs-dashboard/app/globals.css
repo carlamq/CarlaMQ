@@ -4,14 +4,14 @@
   --font-mono: var(--font-jetbrains-mono), monospace;
   --font-sans: var(--font-noto-sans-jp), sans-serif;
 
-  --color-gbg: #080810;
-  --color-gcard: #0e0e1c;
-  --color-gborder: #1e1e35;
-  --color-gprimary: #ff2d78;
-  --color-gaccent: #00ffb3;
-  --color-gpurple: #9b7fe8;
-  --color-gtext: #e4e4f0;
-  --color-gmuted: #5a5a7a;
+  --color-gbg: #1e1e1e;
+  --color-gcard: #252526;
+  --color-gborder: #3e3e42;
+  --color-gprimary: #569cd6;
+  --color-gaccent: #6a9955;
+  --color-gpurple: #dcdcaa;
+  --color-gtext: #d4d4d4;
+  --color-gmuted: #808080;
 }
 
 * {
@@ -47,7 +47,7 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 45, 120, 0.3);
+  background: rgba(86, 156, 214, 0.3);
   color: var(--color-gtext);
 }
 
@@ -83,7 +83,7 @@ body {
 /******** NAV ****************************/
 .neon-pink {
   color: var(--color-gprimary);
-  text-shadow: 0 0 10px rgba(255, 45, 120, 0.7), 0 0 30px rgba(255, 45, 120, 0.3);
+  text-shadow: 0 0 10px rgba(86, 156, 214, 0.7), 0 0 30px rgba(86, 156, 214, 0.3);
 }
 
 .nav-link {
@@ -98,7 +98,7 @@ body {
   width: 0;
   height: 2px;
   background: var(--color-gprimary);
-  box-shadow: 0 0 8px rgba(255, 45, 120, 0.8);
+  box-shadow: 0 0 8px rgba(86, 156, 214, 0.8);
   transition: width 0.25s ease;
 }
 
@@ -147,9 +147,9 @@ body {
 }
 
 .skill-tag:hover {
-  background: rgba(255, 45, 120, 0.15);
+  background: rgba(86, 156, 214, 0.15);
   color: var(--color-gprimary);
-  box-shadow: 0 0 12px rgba(255, 45, 120, 0.3);
+  box-shadow: 0 0 12px rgba(86, 156, 214, 0.3);
 }
 
 /******** projects cards ****************************/
@@ -158,36 +158,12 @@ body {
 }
 
 .project-card:hover {
-  border-color: rgba(255, 45, 120, 0.6);
-  box-shadow: 0 0 24px rgba(255, 45, 120, 0.15), 0 0 48px rgba(255, 45, 120, 0.08);
+  border-color: rgba(86, 156, 214, 0.6);
+  box-shadow: 0 0 24px rgba(86, 156, 214, 0.15), 0 0 48px rgba(86, 156, 214, 0.08);
   transform: translateY(-4px);
 }
 
 /******** animacion del hero ****************************/
-@keyframes kanji-fade {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes yokai-drift {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(-1deg);
-  }
-
-  50% {
-    transform: translateY(-12px) rotate(2deg);
-  }
-}
-
 @keyframes photo-drop {
   0% {
     transform: translateY(-80px) scale(1.3) rotate(-8deg);

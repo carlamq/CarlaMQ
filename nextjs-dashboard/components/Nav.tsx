@@ -51,7 +51,7 @@ export default function Nav({ lang, onLangToggle, content }: NavProps) {
 
                     <button
                         onClick={onLangToggle}
-                        className="flex items-center gap-1.5 bg-transparent border border-gborder rounded font-mono text-[11px] font-bold tracking-[0.12em] text-gtext px-3 py-1.5 transition-[border-color,box-shadow] duration-200 hover:border-gprimary hover:shadow-[0_0_10px_rgba(255,45,120,0.3)]"
+                        className="flex items-center gap-1.5 bg-transparent border border-gborder rounded font-mono text-[11px] font-bold tracking-[0.12em] text-gtext px-3 py-1.5 transition-[border-color,box-shadow] duration-200 hover:border-gprimary hover:shadow-[0_0_10px_rgba(86,156,214,0.3)]"
                     >
                         <span>{lang === 'en' ? '🇯🇵' : '🇺🇸'}</span>
                         <span className="text-gpurple">{lang === 'en' ? 'JA' : 'EN'}</span>

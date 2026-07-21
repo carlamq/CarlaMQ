@@ -119,12 +119,12 @@ export default function Terminal({ lang, onLangChange }: TerminalProps) {
     }
 
     const getLineColor = (entry: HistoryEntry, line: string): string => {
-        if (entry.type === 'input') return '#e4e4f0'
-        if (entry.type === 'error') return '#ff2d78'
-        if (line.includes('→')) return '#5a5a7a'
-        if (line.includes('╔') || line.includes('╚') || line.includes('║') || line.includes('┌') || line.includes('└') || line.includes('│') || line.includes('─')) return '#9b7fe8'
-        if (line.includes('BOO') || line.includes('わっ') || line.includes('👻')) return '#ff2d78'
-        return '#00ffb3'
+        if (entry.type === 'input') return '#d4d4d4'
+        if (entry.type === 'error') return '#f44747'
+        if (line.includes('→')) return '#808080'
+        if (line.includes('╔') || line.includes('╚') || line.includes('║') || line.includes('┌') || line.includes('└') || line.includes('│') || line.includes('─')) return '#dcdcaa'
+        if (line.includes('BOO') || line.includes('わっ') || line.includes('👻')) return '#f44747'
+        return '#6a9955'
     }
     return (
         <section id="terminal" className="py-20 px-6">
@@ -177,7 +177,7 @@ export default function Terminal({ lang, onLangChange }: TerminalProps) {
                             autoComplete="off"
                             className="flex-1 bg-transparent border-none outline-none font-mono text-[13px] text-gtext caret-gaccent"
                         />
-                        <span className="cursor-blink inline-block w-2 h-4 bg-gaccent shadow-[0_0_8px_rgba(0,255,179,0.8)] shrink-0" />
+                        <span className="cursor-blink inline-block w-2 h-4 bg-gaccent shadow-[0_0_8px_rgba(106,153,85,0.8)] shrink-0" />
                     </div>
                 </div>
 

@@ -30,7 +30,7 @@ export default function Projects({ content, lang }: ProjectsProps) {
       <div className="max-w-[1200px] mx-auto">
         <h2
           className="font-mono text-[13px] font-bold tracking-[0.2em] text-gprimary mb-12"
-          style={{ textShadow: '0 0 10px rgba(255,45,120,0.5)' }}
+          style={{ textShadow: '0 0 10px rgba(86,156,214,0.5)' }}
         >
           {content.title}
         </h2>
@@ -76,7 +76,7 @@ export default function Projects({ content, lang }: ProjectsProps) {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-[11px] font-bold tracking-[0.1em] text-gaccent hover:[text-shadow:0_0_10px_rgba(0,255,179,0.7)]"
+                    className="font-mono text-[11px] font-bold tracking-[0.1em] text-gaccent hover:[text-shadow:0_0_10px_rgba(106,153,85,0.7)]"
                   >
                     {content.githubLabel}
                   </a>
@@ -86,7 +86,7 @@ export default function Projects({ content, lang }: ProjectsProps) {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-[11px] font-bold tracking-[0.1em] text-gprimary hover:[text-shadow:0_0_10px_rgba(255,45,120,0.7)]"
+                    className="font-mono text-[11px] font-bold tracking-[0.1em] text-gprimary hover:[text-shadow:0_0_10px_rgba(86,156,214,0.7)]"
                   >
                     {content.liveLabel}
                   </a>
@@ -94,7 +94,7 @@ export default function Projects({ content, lang }: ProjectsProps) {
                 {project.compare && (
                   <Link
                     href={`/molino?lang=${lang}`}
-                    className="font-mono text-[11px] font-bold tracking-[0.1em] text-gprimary hover:[text-shadow:0_0_10px_rgba(255,45,120,0.7)]"
+                    className="font-mono text-[11px] font-bold tracking-[0.1em] text-gprimary hover:[text-shadow:0_0_10px_rgba(86,156,214,0.7)]"
                   >
                     {content.compareLabel}
                   </Link>
@@ -121,7 +121,7 @@ export default function Projects({ content, lang }: ProjectsProps) {
 // Es la forma más común en React de decir "muestra esto solo si existe ese dato" — por eso definimos compare como opcional (?) en el tipo Project
 
 //Nota sobre hover:[text-shadow:...]: ya viste hover: y valores arbitrarios [...] por separado — 
-// aquí se combinan: hover:[text-shadow:0_0_10px_rgba(0,255,179,0.7)] aplica una propiedad de CSS que Tailwind no tiene como utilidad (text-shadow) 
+// aquí se combinan: hover:[text-shadow:...] aplica una propiedad de CSS que Tailwind no tiene como utilidad (text-shadow) 
 // pero solo al pasar el mouse encima. Mismo patrón de siempre, dos ideas juntas.
 
 // Recordatorio: tu proyecto de Molino Campo Noble usa /projects/molino-before.jpg y /projects/molino-after.jpg — 

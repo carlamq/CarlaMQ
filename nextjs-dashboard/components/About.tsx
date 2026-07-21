@@ -14,7 +14,7 @@ export default function About({ content }: AboutProps) {
         <div className="pt-30">
           <h2
             className="font-mono text-[13px] font-bold tracking-[0.2em] text-gprimary mb-6"
-            style={{ textShadow: '0 0 10px rgba(255,45,120,0.5)' }}
+            style={{ textShadow: '0 0 10px rgba(86,156,214,0.5)' }}
           >
             {content.title}
           </h2>

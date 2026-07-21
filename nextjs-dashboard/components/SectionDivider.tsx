@@ -34,7 +34,7 @@ export default function SectionDivider({ flip = false }: { flip?: boolean }) {
           <path
             key={key}
             d={`M ${x} ${y + h} A ${w / 2} ${h} 0 0 1 ${x + w} ${y + h}`}
-            stroke="rgba(155,127,232,0.6)"
+            stroke="rgba(220,220,170,0.6)"
             strokeWidth="1"
             fill="none"
           />
