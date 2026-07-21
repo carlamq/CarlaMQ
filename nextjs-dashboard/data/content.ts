@@ -48,6 +48,8 @@ export const content = { // Definimos el objeto content que contiene toda la inf
       title: '// PROJECTS',
       githubLabel: 'View on GitHub →',
       liveLabel: 'Live Demo →',
+      compareLabel: 'View full image →',
+      backLabel: '← Back to home',
       items: [
         {
           id: '001',
@@ -65,8 +67,8 @@ export const content = { // Definimos el objeto content que contiene toda la inf
           tags: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
           year: '2026',
           compare: {
-            before: '/projects/molino-before.jpg',
-            after: '/projects/molino-after.jpg',
+            before: '/molino-before.png',
+            after: '/molino-after.png',
           },
         },
       ] as Project[],
@@ -172,9 +174,9 @@ export const content = { // Definimos el objeto content que contiene toda la inf
     about: {
       title: '// 自己紹介',
       body: [
-        'はじめまして、カーラです。技術的なエンジニアリングと、良いデザインへの創造的なアプローチを組み合わせるソフトウェア開発の学生です。',
-        'コードを書くだけではなく、アイデアを実際に人が楽しめる体験へと変えていくことが私の仕事です。',
-        '現在はBYU-Idahoでソフトウェア開発を専攻しながら日本に住み、プロジェクトごとに（そしてエラーごとに）スキルを磨いています。',
+        'はじめまして、カーラです。技術的なエンジニアリングと、良いデザインへの\n創造的なアプローチを組み合わせるソフトウェア開発の学生です。',
+        'コードを書くだけではなく、アイデアを実際に人が楽しめる体験へと\n変えていくことが私の仕事です。',
+        '現在はBYU-Idahoでソフトウェア開発を専攻しながら日本に住み、\nプロジェクトごとに（そしてエラーごとに）スキルを磨いています。',
         'まだ始めたばかりですが、ソフトウェアエンジニアリングという素晴らしい世界にどんどん飛び込んでいます — 404: 恐れは見つかりません。👻',
       ],
       facts: [
@@ -188,12 +190,14 @@ export const content = { // Definimos el objeto content que contiene toda la inf
     projects: {
       title: '// プロジェクト',
       githubLabel: 'GitHubで見る →',
+      compareLabel: '画像全体を見る →',
+      backLabel: '← ホームに戻る',
       liveLabel: 'デモを見る →',
       items: [
         {
           id: '001',
           name: 'Handcrafted Haven',
-          desc: '職人が自分の作品を販売できるECサイト。チームでのプロジェクトとして、在庫管理、ユーザー認証（NextAuth.js）、MongoDBを使ったデータベースを実装し、静的レンダリングを採用。レイアウトとビジュアルデザイン全体を担当し、カテゴリーページ、ショップページ、在庫管理ページを設計・実装した。',
+          desc: '職人が自分の作品を販売できる\nECサイト。チームでのプロジェクト\nとして、在庫管理、ユーザー認証（NextAuth.js）、MongoDBを使った\nデータベースを実装し、静的\nレンダリングを採用。レイアウトと\nビジュアルデザイン全体を担当し、\nカテゴリーページ、ショップページ、在庫管理ページを設計・実装した。',
           tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'NextAuth.js'],
           year: '2026',
           github: 'https://github.com/carlamq/handcraft-haven',
@@ -202,13 +206,13 @@ export const content = { // Definimos el objeto content que contiene toda la inf
         {
           id: '002',
           name: 'Molino Campo Noble — Shopifyリニューアル',
-          desc: 'クライアントのShopifyストアの全面リニューアル。カラーデザイン、情報設計、テーマ編集、UX改善を行い、ナビゲーションと購入導線を整理。クライアントが今後自分で編集しやすいよう、コードを整理して残した。2026年8月公開予定。',
+          desc: 'クライアントのShopifyストアの全面リニューアル。カラーデザイン、\n情報設計、テーマ編集、UX改善を\n行い、ナビゲーションと購入導線を\n整理。クライアントが今後自分で\n編集しやすいよう、コードを整理して残した。2026年8月公開予定。',
           tags: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
           year: '2026',
           compare: {
-            before: '/projects/molino-before.jpg',
-            after: '/projects/molino-after.jpg',
-          },
+            before: '/molino-before.png',
+            after: '/molino-after.png',
+        },
         },
       ] as Project[], // Aquí también definimos que items es un array de Project, para que TypeScript sepa que cada item tiene las propiedades definidas en el tipo Project
     },
