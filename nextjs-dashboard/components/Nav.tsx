@@ -1,63 +1,110 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
 import { Lang } from '@/data/content'
 
-interface NavProps { //define la forma que deben tener las props que recibe el componente Nav, en este caso, lang y onLangToggle
-    lang: Lang
-    onLangToggle: () => void //cambia el idioma de la página cuando se hace clic en el botón de cambio de idioma
-    content: { //objeto con las 4 etiquetas de texto del menú — este es justo content[lang].nav que armamos en la lección pasada.
-        about: string
-        projects: string
-        skills: string
-        contact: string
-    }
+interface NavProps {
+  lang: Lang
+  onLangToggle: () => void
+  content: {
+    about: string
+    projects: string
+    skills: string
+    contact: string
+  }
 }
 
-const scrollTo = (id: string) => { //funcion auxiliar que usa un API nativa del navegador
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }) //función que hace scroll a la sección correspondiente cuando se hace clic en un enlace del menú
-    //document.getElementById(id) busca un elemento HTML por su id,
-    // y .scrollIntoView({ behavior: 'smooth' }) hace scroll suave hasta ahí. El ?. (optional chaining) evita un error si por alguna razón ese id no existe en la página.
+const scrollTo = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Nav({ lang, onLangToggle, content }: NavProps) {
-    const links = [ 
-        {label: content.about, id: 'about'},
-        {label: content.projects, id: 'projects'},
-        {label: content.skills, id: 'skills'},
-        {label: content.contact, id: 'contact'},
-    ]
+  const [isOpen, setIsOpen] = useState(false)
+  const displayFont = lang === 'ja' ? 'font-jp-body' : 'font-display'
+  const links = [
+    { label: content.about, id: 'about' },
+    { label: content.skills, id: 'skills' },
+    { label: content.projects, id: 'projects' },
+    { label: content.contact, id: 'contact' },
+  ]
 
-    return (
-        <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-gborder backdrop-blur-md bg-gbg/85"> {/*corchetes [ ] en una clase de Tailwind significan "valor arbitrario" */}
-            <div className="max-w-[1200px] mx-auto px-6 h-[60px] flex items-center justify-between">
-                <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer font-mono font-extrabold text-[15px] tracking-[0.08em]"
-                >
-                    <span className="text-[22px]">👻</span>
-                    <span className="neon-pink">{lang === 'ja' ? 'ポートフォリオ' : 'PORTFOLIO'}</span>
-                </button>
+  const goTo = (id: string) => {
+    scrollTo(id)
+    setIsOpen(false)
+  }
 
-                <div className="flex items-center gap-8">
-                    {links.map(({label, id}) => (
-                        <button
-                            key={id}
-                            onClick={() => scrollTo(id)}
-                            className="nav-link bg-transparent border-none cursor-pointer font-mono text-[11px] font-bold tracking-[0.15em] text-gmuted hover:text-gtext transition-colors duration-200 py-1"
-                        >
-                            {label}
-                        </button>
-                    ))}
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-ink/80 backdrop-blur-md border-b border-white/10">
+      <div className="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="shrink-0 self-start">
+          <Image src="/carlamq-logo.png" alt="CarlaMQ" width={400} height={300} className="h-[140px] w-auto block -mt-3" />
+        </button>
 
-                    <button
-                        onClick={onLangToggle}
-                        className="flex items-center gap-1.5 bg-transparent border border-gborder rounded font-mono text-[11px] font-bold tracking-[0.12em] text-gtext px-3 py-1.5 transition-[border-color,box-shadow] duration-200 hover:border-gprimary hover:shadow-[0_0_10px_rgba(86,156,214,0.3)]"
-                    >
-                        <span>{lang === 'en' ? '🇯🇵' : '🇺🇸'}</span>
-                        <span className="text-gpurple">{lang === 'en' ? 'JA' : 'EN'}</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    )
+        <div className="hidden min-[1000px]:flex items-center gap-7">
+          {links.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              className={`${displayFont} text-[13px] font-semibold tracking-[0.05em] uppercase text-cream/80 hover:text-lime transition-colors`}
+            >
+              {label}
+            </button>
+          ))}
+
+          <button
+            onClick={onLangToggle}
+            className="font-display text-xs font-bold tracking-[0.05em] text-ink bg-yellow rounded-full px-3 py-1.5 hover:brightness-110 transition"
+          >
+            {lang === 'en' ? '🇯🇵 JA' : '🇺🇸 EN'}
+          </button>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            className="font-display text-[13px] font-bold tracking-[0.03em] uppercase text-ink bg-lime rounded-full px-5 py-2 border-2 border-ink hover:-translate-y-0.5 transition-transform"
+          >
+            Let&apos;s Talk ⚡
+          </button>
+        </div>
+
+        <button
+          onClick={() => setIsOpen((o) => !o)}
+          className="min-[1000px]:hidden flex flex-col justify-center gap-1.5 w-10 h-10 shrink-0"
+          aria-label="Menu"
+        >
+          <span className={`block w-6 h-0.5 bg-cream transition-transform ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-cream transition-opacity ${isOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-cream transition-transform ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="min-[1000px]:hidden bg-ink border-t border-white/10 px-6 py-6 flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center gap-5">
+          {links.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => goTo(id)}
+              className={`${displayFont} text-base font-semibold tracking-[0.05em] uppercase text-cream/80 hover:text-lime transition-colors`}
+            >
+              {label}
+            </button>
+          ))}
+
+          <button
+            onClick={onLangToggle}
+            className="font-display text-xs font-bold tracking-[0.05em] text-ink bg-yellow rounded-full px-3 py-1.5 hover:brightness-110 transition"
+          >
+            {lang === 'en' ? '🇯🇵 JA' : '🇺🇸 EN'}
+          </button>
+
+          <button
+            onClick={() => goTo('contact')}
+            className="font-display text-[13px] font-bold tracking-[0.03em] uppercase text-ink bg-lime rounded-full px-5 py-2 border-2 border-ink hover:-translate-y-0.5 transition-transform"
+          >
+            Let&apos;s Talk ⚡
+          </button>
+        </div>
+      )}
+    </nav>
+  )
 }

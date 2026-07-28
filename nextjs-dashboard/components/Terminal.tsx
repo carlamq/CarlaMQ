@@ -127,67 +127,43 @@ export default function Terminal({ lang, onLangChange }: TerminalProps) {
         return '#6a9955'
     }
     return (
-        <section id="terminal" className="py-20 px-6">
-            <div className="max-w-[860px] mx-auto">
-                <p className="font-mono text-[11px] font-bold tracking-[0.2em] text-gmuted mb-5 uppercase">
-                    {'// INTERACTIVE_TERMINAL'}
-                </p>
-
-                <div
-                    className="rounded-lg overflow-hidden border border-gborder bg-gcard cursor-text"
-                    onClick={() => inputRef.current?.focus()}
-                >
-                    {/* Barra de título */}
-                    <div className="flex items-center gap-2 px-4 py-3 border-b border-gborder bg-[#0a0a14]">
-                        <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                        <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-                        <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-                        <span className="ml-3 font-mono text-[11px] text-gmuted tracking-wider">
-                            portfolio — bash — 80×24
-                        </span>
-                    </div>
-
-                    {/* Área de salida */}
-                    <div ref={outputRef} className="p-4 h-[360px] overflow-y-auto font-mono text-[13px] leading-relaxed">
-                        {history.map((entry, i) =>
-                            entry.lines.map((line, j) => (
-                                <div
-                                    key={`${i}-${j}`}
-                                    className="term-line whitespace-pre min-h-[1.6em]"
-                                    style={{ color: getLineColor(entry, line) }}
-                                >
-                                    {line}
-                                </div>
-                            ))
-                        )}
-                        <div />
-                    </div>
-
-                    {/* Fila de input */}
-                    <div className="flex items-center gap-2 px-4 py-3 border-t border-gborder bg-[#050509]">
-                        <span className="font-mono text-[13px] text-gpurple whitespace-nowrap shrink-0">
-                            {c.prompt}
-                        </span>
-                        <input
-                            ref={inputRef}
-                            value={input}
-                            onChange={e => setInput(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            spellCheck={false}
-                            autoComplete="off"
-                            className="flex-1 bg-transparent border-none outline-none font-mono text-[13px] text-gtext caret-gaccent"
-                        />
-                        <span className="cursor-blink inline-block w-2 h-4 bg-gaccent shadow-[0_0_8px_rgba(106,153,85,0.8)] shrink-0" />
-                    </div>
-                </div>
-
-                <p className="mt-3 font-mono text-[11px] text-gmuted tracking-wide">
-                    {lang === 'en'
-                        ? 'Tip: use ↑ ↓ for history · Tab for autocomplete'
-                        : 'ヒント: ↑ ↓ で履歴 · Tab でオートコンプリート'}
-                </p>
+        <div
+            className="flex flex-col h-full bg-gbg cursor-text"
+            onClick={() => inputRef.current?.focus()}
+        >
+            {/* Área de salida */}
+            <div ref={outputRef} className="flex-1 p-3 overflow-y-auto font-mono text-[13px] leading-relaxed">
+                {history.map((entry, i) =>
+                    entry.lines.map((line, j) => (
+                        <div
+                            key={`${i}-${j}`}
+                            className="term-line whitespace-pre min-h-[1.6em]"
+                            style={{ color: getLineColor(entry, line) }}
+                        >
+                            {line}
+                        </div>
+                    ))
+                )}
+                <div />
             </div>
-        </section>
+
+            {/* Fila de input */}
+            <div className="flex items-center gap-2 px-3 py-2 border-t border-gborder shrink-0">
+                <span className="font-mono text-[13px] text-gpurple whitespace-nowrap shrink-0">
+                    {c.prompt}
+                </span>
+                <input
+                    ref={inputRef}
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    spellCheck={false}
+                    autoComplete="off"
+                    className="flex-1 bg-transparent border-none outline-none font-mono text-[13px] text-gtext caret-gaccent"
+                />
+                <span className="cursor-blink inline-block w-2 h-4 bg-gaccent shadow-[0_0_8px_rgba(106,153,85,0.8)] shrink-0" />
+            </div>
+        </div>
     )
 }
 

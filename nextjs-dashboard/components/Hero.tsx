@@ -1,117 +1,113 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useRef, type PointerEvent } from 'react'
-
-
+import type { Lang } from '@/data/content'
 
 interface HeroProps {
-    content: {
-        greeting: string
-        name: string
-        nameKana: string
-        role: string
-        tagline: string
-        sub: string
-        terminalHint: string
-    }
-    onScrollToTerminal: () => void
-}
-
-export default function Hero({ content, onScrollToTerminal }: HeroProps) {
-  const [hovering, setHovering] = useState(false)
-  const [cursor, setCursor] = useState({ x: 0, y: 0 })
-  const heroRef = useRef<HTMLElement>(null)
-
-  const handlePointerMove = (e: PointerEvent<HTMLElement>) => {
-    if (!heroRef.current) return
-    const rect = heroRef.current.getBoundingClientRect()
-    setCursor({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  content: {
+    greeting: string
+    name: string
+    nameKana: string
+    role: string
+    tagline: string
+    sub: string
+    viewWorkLabel: string
   }
-
-  const mask = `radial-gradient(circle at ${cursor.x}px ${cursor.y}px, #000 72px, transparent 130px)`
-
-    return(
-        <section
-          ref={heroRef}
-          id="hero"
-          className="relative overflow-hidden min-h-screen pt-[60px] flex items-center"
-          onPointerEnter={() => setHovering(true)}
-          onPointerMove={handlePointerMove}
-          onPointerLeave={() => setHovering(false)}
-      >
-          {/* Línea degradada debajo del Nav */}
-          <div
-              className="absolute top-[60px] left-0 right-0 h-[3px] pointer-events-none"
-              style={{
-                  background: 'linear-gradient(90deg, transparent, rgba(220,220,170,0.3) 20%, rgba(86,156,214,0.3) 50%, rgba(220,220,170,0.3) 80%, transparent)',
-              }}
-          />
-          <div className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage: 'radial-gradient(circle at center, rgba(30,30,60,0.85) 1.2px, transparent 1.4px)',
-              backgroundSize: '24px 24px',
-          }}
-          />
-          <div
-              className="absolute inset-0 pointer-events-none transition-opacity duration-75"
-              style={{
-                  backgroundImage: 'radial-gradient(circle at center, rgba(86,156,214,0.75) 2px, transparent 2.2px)',
-                  backgroundSize: '24px 24px',
-                  opacity: hovering ? 1 : 0,
-                  maskImage: mask,
-                  WebkitMaskImage: mask,
-              }}
-          />
-          <div className="relative z-10 max-w-[1200px] mx-auto px-6 w-full grid grid-cols-[1fr_auto] items-center gap-10"> {/* El guion bajo _ dentro de los corchetes representa un espacio (en clases de Tailwind no puedes poner espacios literales)*/}
-            <div>
-              <p className="font-mono text-xs font-medium text-gaccent tracking-[0.22em] mb-3">
-                {content.greeting}
-              </p>
-              <h1 className="font-mono text-[clamp(36px,5.5vw,74px)] font-extrabold text-gtext leading-[1.05] mb-1.5 tracking-tight">
-                {content.name} 
-              </h1>
-              <p className="font-sans text-[clamp(16px,2vw,24px)] font-bold text-[#f44747] tracking-[0.15em] mb-3.5">
-                {content.nameKana}
-              </p>
-              <div className="w-[70px] h-[3px] bg-linear-to-r from-[#f44747] via-gprimary to-gpurple rounded mb-5" />
-              <p className="font-mono text-xs font-bold text-gprimary tracking-[0.2em] mb-4">
-                {content.role}
-              </p>
-              <p className="text-[clamp(16px,2.2vw,26px)] font-bold text-gtext mb-2.5 leading-snug">
-                {content.tagline}
-              </p>
-              <p className="text-sm text-gmuted mb-9 leading-relaxed max-w-[460px]">
-                {content.sub}
-              </p>
-              <div className="flex items-center gap-3.5 flex-wrap">
-                <button
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="font-mono text-[11px] font-bold tracking-[0.15em] text-gbg bg-gprimary rounded px-6 py-3 shadow-[0_0_20px_rgba(86,156,214,0.45)] hover:shadow-[0_0_36px_rgba(86,156,214,0.8)] hover:-translate-y-0.5 transition"
-                >
-                  VIEW PROJECTS
-                </button>
-                <button
-                  onClick={onScrollToTerminal}
-                  className="font-mono text-[11px] font-bold tracking-[0.15em] text-gaccent bg-transparent border border-gaccent/35 rounded px-6 py-3 hover:border-gaccent hover:shadow-[0_0_16px_rgba(106,153,85,0.25)] transition"
-                >
-                  {content.terminalHint}
-                </button>
-              </div>
-            </div>
-
-          <div className="photo-drop relative w-60 h-60 rounded-full overflow-hidden border-4 border-gprimary shadow-[0_0_30px_rgba(86,156,214,0.5)]">
-
-                <Image src="/carla.jpg" alt="Carla M. Quintanar" fill className="object-cover" />
-            </div>
-
-          </div>
-        </section>       
-    )
+  github: string
+  lang: Lang
 }
 
-/* | clamp(36px, 5.5vw, 74px)| — función nativa de CSS (no de Tailwind) para tipografía fluida: nunca más chico que 36px, nunca más grande que 74px, y en medio se ajusta según 5.5vw (5.5% del ancho de la ventana). Así el título se ve bien en celular y en pantalla grande sin escribir media queries.
+export default function Hero({ content, github, lang }: HeroProps) {
+  const [firstPart, ...rest] = content.name.split(' ')
+  const lastPart = rest.join(' ')
+  const displayFont = lang === 'ja' ? 'font-jp-body' : 'font-display'
+  const subFont = lang === 'ja' ? 'font-jp-body' : ''
 
-| bg-linear-to-r | — en Tailwind v3 esto se llamaba bg-gradient-to-r; en v4 lo renombraron a bg-linear-to-r (para dejar espacio a bg-conic-* y bg-radial-*, otros tipos de gradiente nuevos). Crea un degradado de izquierda a derecha entre los colores en from-, via-, to-.
+  return (
+    <section id="hero" className="relative overflow-hidden min-h-[calc(56.2vw+72px)] flex items-start pt-[160px]">
+      {/* Foto de fondo, recortada desde arriba (no se ve lo que sobre por debajo) */}
+      <div className="absolute inset-x-0 top-[72px] bottom-0">
+        <Image
+          src="/hero-big.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-top"
+        />
+      </div>
 
-| onScrollToTerminal | — todavía no existe la Terminal (Lección 6), así que por ahora esta prop va a ser una función vacía temporal. La dejamos preparada para conectarla de verdad más adelante. */
+      <div className="relative max-w-[1200px] mx-auto px-6 w-full">
+        <div className="max-w-2xl">
+          <p className={`${displayFont} text-base font-semibold tracking-[0.15em] uppercase text-lime mb-5`}>
+            {content.greeting}
+          </p>
+
+          <h1 className="font-henny text-[clamp(48px,7.5vw,96px)] leading-[1.05] mb-4">
+            <span className="text-pink">{firstPart}</span>{' '}
+            <span className="text-yellow">{lastPart}</span>
+          </h1>
+
+          <span className="inline-block font-jp-title text-xl bg-purple/20 border border-purple text-cream rounded-full px-5 py-1.5 mt-2 mb-7">
+            {content.nameKana}
+          </span>
+
+          <p className="font-display text-[clamp(24px,3.4vw,40px)] font-semibold text-cream leading-snug mb-4">
+            {content.tagline}
+          </p>
+          <p className={`${subFont} text-cream text-lg font-medium max-w-lg mb-9 [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]`}>
+            {content.sub}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-5 mb-11">
+            <button
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className={`${displayFont} font-bold text-base uppercase tracking-wide text-ink bg-lime rounded-full px-9 py-4 border-2 border-ink hover:-translate-y-0.5 transition-transform`}
+            >
+              {content.viewWorkLabel} ↗
+            </button>
+            <a
+              href={`https://${github}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-display font-bold text-base uppercase tracking-wide text-cream bg-transparent border-2 border-purple rounded-full px-9 py-4 hover:bg-purple/20 transition-colors"
+            >
+              GitHub ↗
+            </a>
+          </div>
+
+          <div className="font-mono text-[15px] bg-black/60 border-2 border-purple/50 rounded-2xl p-6 max-w-lg">
+            <p><span className="text-purple">const</span> <span className="text-yellow">developer</span> = {'{'}</p>
+            <p className="pl-4"><span className="text-pink">role</span>: <span className="text-lime">&quot;{content.role}&quot;</span>,</p>
+            <p className="pl-4">
+              <span className="text-pink">skills</span>: [
+              <span className="text-lime">&quot;Next.js&quot;</span>,{' '}
+              <span className="text-lime">&quot;TypeScript&quot;</span>,{' '}
+              <span className="text-lime">&quot;HTML/CSS&quot;</span>,{' '}
+              <span className="text-lime">&quot;JavaScript&quot;</span>],
+            </p>
+            <p className="pl-4">
+              <span className="text-pink">passion</span>:<span className="text-lime">&quot;Building digital experiences.&quot;</span>,
+            </p>
+            <p>{'}'}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// destructuring con "rest" (...) para partir un string
+
+//const [firstPart, ...rest] = content.name.split(' ')
+//const lastPart = rest.join(' ')
+
+// content.name.split(' ') convierte "CARLA M. QUINTANAR" en un array: ["CARLA", "M.", "QUINTANAR"].
+// Al hacer destructuring, firstPart toma el primer elemento ("CARLA"), y ...rest (el operador "rest") junta todo lo que sobra en un array nuevo (["M.", "QUINTANAR"]).
+// Luego .join(' ') los vuelve a pegar en un solo string con espacios: "M. QUINTANAR". Así podemos pintar la primera palabra de un color y el resto de otro,
+// sin importar cuántas palabras tenga el nombre.
+//
+//<p>&nbsp;</p>
+//           <p><span className="text-purple">const</span> <span className="text-yellow">mood</span> =</p>
+//            <p className="pl-4">coffe <span className="text-orange">&amp;&amp;</span> mattcha</p>
+//            <p className="pl-8">? <span className="text-lime">&quot;unstoppable&quot;</span></p>
+//             <p className="pl-8">: <span className="text-lime">&quot;debugging...&quot;</span>;</p>
