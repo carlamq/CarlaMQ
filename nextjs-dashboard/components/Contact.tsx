@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Lang } from '@/data/content'
 
 interface ContactProps {
@@ -46,7 +47,7 @@ export default function Contact({ content, lang }: ContactProps) {
         </div>
 
         <div className="mt-16">
-          <img src="/dr-seus.svg" alt="" className="w-full object-contain mb-1" />
+          <img src="/dr-seus.svg" alt="" width={1060} height={104} className="w-full object-contain mb-1" />
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-4 text-center md:text-left">
             <span className="font-mono text-[11px] text-cream/70 tracking-wider">
               Made with 🍵 & Chaos

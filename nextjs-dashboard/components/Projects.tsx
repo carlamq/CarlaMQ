@@ -82,7 +82,7 @@ export default function Projects({ content, lang }: ProjectsProps) {
               </div>
 
               <div className="mt-1">
-                <img src="/dr-seus.svg" alt="" className="w-full h-8 object-contain mb-3" />
+                <img src="/dr-seus.svg" alt="" width={1060} height={104} className="w-full h-8 object-contain mb-3" />
                 <div className="flex gap-4">
                   {project.github && (
                     <a
