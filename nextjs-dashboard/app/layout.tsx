@@ -42,7 +42,6 @@ const jetbrainsMono = JetBrains_Mono({
 const kaiseiDecol = Kaisei_Decol({
   variable: "--font-kaisei-decol",
   weight: ["400", "500", "700"],
-  subsets: ["japanese"],
 });
 
 const notoSansJP = Noto_Sans_JP({
