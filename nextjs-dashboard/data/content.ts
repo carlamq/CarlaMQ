@@ -173,7 +173,7 @@ export const content = { // Definimos el objeto content que contiene toda la inf
       contact: 'お問い合わせ',
     },
     hero: {
-      greeting: 'こんにちは、世界！Impact-Site-Verification: fcb92606-d703-4b3c-8831-edc7898406e5',
+      greeting: 'こんにちは、世界!',
       name: 'Carla M. Quintanar',
       nameKana: '祖谷カーラ',
       role: 'WEB DEVELOPER',
