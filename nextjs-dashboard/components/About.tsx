@@ -72,7 +72,6 @@ export default function About({ lang, content }: AboutProps) {
           </div>
         </div>
       </div>
-      <meta name='impact-site-verification' value='fcb92606-d703-4b3c-8831-edc7898406e5'>
     </section>
   )
 }
