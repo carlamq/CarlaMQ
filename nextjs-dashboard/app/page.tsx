@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-ink">
+      <meta name='impact-site-verification' value='fcb92606-d703-4b3c-8831-edc7898406e5'>
       <Nav lang={lang} onLangToggle={toggleLang} content={c.nav} />
       <Hero content={c.hero} github={c.contact.github} lang={lang} />
       <About content={c.about} lang={lang} />
