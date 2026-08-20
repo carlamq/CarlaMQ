@@ -30,7 +30,7 @@ export const content = { // Definimos el objeto content que contiene toda la inf
       terminalHint: '↓ try the terminal',
     },
     about: {
-      title: '// ABOUT_ME',
+      title: '// ABOUT_ME Impact-Site-Verification: fcb92606-d703-4b3c-8831-edc7898406e5',
       body: [
         { mobile: "Hi! I'm Carla, a Japan-based Web Developer.", tablet: "Hi! I'm Carla, a Japan-based Web Developer.", desktop: "Hi! I'm Carla, a Japan-based Web Developer." },
         { mobile: "I enjoy building websites and web applications that people genuinely enjoy using. I love turning a client's vision into digital experiences that support their business and bring their ideas to life.", tablet: "I enjoy building websites and web applications that people genuinely enjoy using. I love turning a client's vision into digital experiences that support their business and bring their ideas to life.", desktop: "I enjoy building websites and web applications that people genuinely enjoy using. I love turning a client's vision into digital experiences that support their business and bring their ideas to life." },
